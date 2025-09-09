@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&family=Nunito:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&family=Merriweather:wght@300;400;700&family=Dancing+Script:wght@400;500;600;700&family=Fredoka+One&family=Bubblegum+Sans&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="card">
+            <div class="hinge-line-1"></div>
+            <div class="hinge-line-2"></div>
+            
+
+            
+            <div class="gallery">
+                <img src = "https://erepublic.brightspotcdn.com/dims4/default/baa861c/2147483647/strip/true/crop/5800x3024+0+163/resize/840x438!/quality/90/?url=http%3A%2F%2Ferepublic-brightspot.s3.us-west-2.amazonaws.com%2F05%2F36%2F2e1d9a714d94b1633df1bb057ff8%2Fhttps-download.shutterstock.com%2Fgatekeeper%2FW3siZCI6ICJzaHV0dGVyc3RvY2stbWVkaWEiLCAiayI6ICJwaG90by81MjU4MjI4NDEvaHVnZS5qcGciLCAiZGMiOiAiaWRsXzEyMyIsICJlIjogMTYzOTE5MTgxNCwgIm0iOiAxfSwgIkk4L2ZGdGEyem5qM25oL0R1VWd1Ky9VQkZkWSJd%2Fshutterstock_525822841.jpg" alt = "Computer Science">
+                <img src = "https://newstrance2015.wordpress.com/wp-content/uploads/2015/09/violin.jpg" alt = "Vioin">
+                <img src = "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3ltfGVufDB8fDB8fHww" alt = "Gym">
+                <img src = "https://media.istockphoto.com/id/1405383671/photo/bakery-items-and-ingredients-background.jpg?s=612x612&w=0&k=20&c=k0TaPRmc1juE499HmlswGiJp0ELL2yIJBcdlWhwn78o=" alt = "Baking">
+            </div>
+            <img class="profile" src = "https://media.licdn.com/dms/image/v2/D4E03AQG4wPIS49d7ng/profile-displayphoto-scale_400_400/B4EZd_KyWpHgAg-/0/1750185224720?e=1758758400&v=beta&t=KzxugYofDaZOrZXrZC8fduLYfvFjavrpkYGHJSaN-_8" alt = "LinkedIn Profile Picture">
+            <div class="card-content">
+                <h2 class="card-title">Aishani Bal</h2>
+                <p class="card-description">Aishani Bal is a second year Computer Science student at Georgia Institute of Technology from Cumming, Georgia. Her passions related to social good include education and healthcare, more specifically: EdTech and MedTech.
+                <p class="card-question card-description">Will Aishani get into the bootcamp?</p>
+                <button class="card-button-yes card-button" onclick ="yay()">Yes</button>
+                <button onmouseenter="hover()" onmouseleave="mouseLeave()" onclick="yay()" class="card-button-no card-button">No</button>
+            </div>
+        </div>
+        <script>
+
+        
+            let images;
+            let i = 0;
+
+            document.addEventListener("DOMContentLoaded", function() {
+                images = document.querySelectorAll(".gallery img");
+                images[i].classList.add('active');
+
+                setInterval(nextImage, 3000);
+                
+            });
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowRight') {
+                    nextImage();
+                } else if (event.key === 'ArrowLeft') {
+                    prevImage();
+                }   
+            });
+
+        function nextImage(){
+            images[i].classList.remove('active');
+            i = (i + 1) % images.length;
+            images[i].classList.add('active');
+        }
+
+        function prevImage(){
+            images[i].classList.remove('active');
+            i = (i - 1 + images.length) % images.length;
+            images[i].classList.add('active');
+        }
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.card');
+            let isDragging = false;
+            let startX, startY;
+            let currentRotationX = 0;
+            let currentRotationY = 0;
+            
+            card.addEventListener('mousedown', startDrag);
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', endDrag);
+            
+            
+            function startDrag(e) {
+                isDragging = true;
+                const rect = card.getBoundingClientRect();
+                
+                if (e.type === 'mousedown') {
+                    startX = e.clientX - rect.left;
+                    startY = e.clientY - rect.top;
+                } 
+
+                card.style.animation = 'none';
+                card.style.transition = 'none';
+            }
+            
+            function drag(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                const rect = card.getBoundingClientRect();
+                let currentX;
+                
+                if (e.type === 'mousemove') {
+                    currentX = e.clientX - rect.left;
+                } 
+                
+                const deltaX = currentX - startX;
+                
+                currentRotationY = -(deltaX / rect.width) * 60; 
+                
+                card.style.transform = `rotateZ(${currentRotationY}deg)`;
+            }
+            
+            function endDrag() {
+                isDragging = false;
+                card.style.transition = 'transform 0.5s ease-out';
+                
+                card.style.transform = 'rotateZ(-2deg)';
+                
+                setTimeout(() => {
+                    card.style.animation = 'idleSwing 4s ease-in-out infinite'; 
+                }, 500);
+            }
+        });
+        function hover() {
+            document.querySelector('.card-button-no').textContent = "Yes";
+        }
+        
+        function mouseLeave() {
+            document.querySelector('.card-button-no').textContent = "No";
+        }
+        function yay() {
+            document.querySelector('.card-question').textContent = "Yay! Aishani got into the bootcamp!";
+            document.querySelector('.card-question').style.color = 'green';
+            createConfetti();
+        }
+        
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = -20 + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0%';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '9999';
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+
+        </script>
+    </body>
+</html>

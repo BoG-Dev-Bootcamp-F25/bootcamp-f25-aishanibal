@@ -1,0 +1,192 @@
+/* Your Styles Here */
+
+
+body {
+    background: repeating-linear-gradient(
+        45deg,
+        #fffef5,
+        #fffef5 50px,
+        #faf8e7 50px,
+        #faf8e7 100px
+    );
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2vw;
+    box-sizing: border-box;
+}
+
+.card {
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0.5, 0.5),
+    inset 0 0 0 6px #ffffff,
+    inset 0 0 0 8px #12154b;
+    padding-bottom: 3vw;
+    width: min(100vw, 600px);
+    height: min(100vw, 600px);
+    margin: 20px;
+    justify-content: center;
+    border-radius: 20px;
+    transform-origin: top center;
+    transition: transform 0.1s ease-out;
+    cursor: grab;
+    user-select: none;
+    animation: idleSwing 4s ease-in-out infinite;
+
+}
+
+.card:active {
+    cursor: grabbing; 
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle,#1c092d, #411599);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+
+.card .hinge-line-1 {
+    position: absolute;
+    top: -45px;
+    left: calc(49% - 6px);
+    width: 3px;
+    height: 50px;
+    background: linear-gradient(to bottom, #1c092d, #411599);
+    transform: rotate(25deg);
+    z-index: -10;
+}
+
+.card .hinge-line-2 {
+    position: absolute;
+    top: -40px;
+    left: calc(51% + 6px);
+    width: 3px;
+    height: 45px;
+    background: linear-gradient(to bottom, #1c092d, #411599);
+    transform: rotate(-25deg);
+    z-index: -10;
+}
+
+.card-content {
+    text-align: center;
+}
+
+.profile {
+    width: min(20vw, 150px);
+    height: min(20vw, 150px);
+    border-radius: 50%;
+    border: 2px solid #12154b;
+    object-fit: cover;
+    margin: 0 auto 2vw;
+    display: block;
+    position: relative;
+    z-index: 10000;
+}
+
+.gallery {
+    position: relative;
+    width: 96.99%;
+    height: min(40vw, 250px);
+    overflow: hidden;
+    margin: 9px;
+    margin-bottom: -50px;
+    z-index: -1;
+    border-radius: 10px 10px 0 0;
+}
+
+.gallery img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; 
+    transition: opacity 0.5s; 
+}
+
+.gallery img.active {
+    opacity: 1;
+}
+
+.card-title {
+    font-size: clamp(18px, 4vw, 24px);
+    color: #333;
+    font-family: 'Bubblegum Sans', cursive;
+    font-weight: 400;
+}
+
+.card-description {
+    font-size: clamp(14px, 3vw, 16px);
+    margin: 0 2vw 1vw 2vw;
+    color: #666;
+    line-height: 1.5;
+    font-family: 'Comic Neue', cursive;
+    font-weight: 400;
+}
+
+.card-button {
+    background-color: #e3e1ca;
+    color: black;
+    border: none;
+    padding: clamp(8px, 2vw, 12px) clamp(16px, 4vw, 24px);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: clamp(14px, 3vw, 16px);
+    transition: background-color 0.3s;
+    margin: 0 10px 10px 0;
+    font-family: 'Fredoka One', cursive;
+    font-weight: 400;
+}
+
+.card-button:hover {
+    background-color: rgb(156, 163, 171);
+}
+
+/* @keyframes rotate {
+    from { 
+        opacity: 0; 
+        transform: rotate(800deg) scale(0.1); 
+    }
+    to { 
+        opacity: 1; 
+        transform: rotate(0deg) scale(1); 
+    }
+} */
+
+@keyframes idleSwing {
+    0% { 
+        transform: rotateZ(-2deg); 
+    }
+    50% { 
+        transform: rotateZ(2deg); 
+    }
+    100% { 
+        transform: rotateZ(-2deg); 
+    }
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+
+
