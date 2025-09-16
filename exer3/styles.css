@@ -44,11 +44,12 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px;
 }
 
 input {
     width: 500px;
-    height: 50px;
+    height: 30px;
     border: 1px solid black;
     border-radius: 25px;
     padding: 10px;
@@ -56,6 +57,7 @@ input {
     font-family: 'Arial', sans-serif;
     font-weight: 400;
     color: #333;
+    margin: 20px;
 }
 
 .search-button {
@@ -71,6 +73,14 @@ input {
     margin-left: 10px;
 }
 
+.back-button {
+    margin: 20px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    color: #333;
+}
+
 .footer {
     display:flex;
     justify-content: center;
@@ -79,4 +89,28 @@ input {
     padding: 8px;
     color: #333;
     border-top: 1px solid black;
+}
+
+.results-container {
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    align-items: center;
+    border-top: 1px solid black;
+}
+
+.result-item {
+    border: 1px solid black;
+    margin: 20px;
+    font-size: 23px;
+    padding:20px;
+}
+
+
+
+.pic {
+    justify-content: right;
+    width: 400px;
+    height: 400px;
+    margin: 20px;
 }
