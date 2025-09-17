@@ -4,13 +4,14 @@ body {
     flex-direction: column;
     height: 100vh;
     margin: 0;
+    background-color: #d5e4fe;
 }
 
 nav {
     display: flex;
     justify-content: right;
     align-items: center;
-    background-color: #f8f8f8;
+    background-color: #adc1e3;
     
 }
 
@@ -23,12 +24,15 @@ nav {
     background-color: #335363;
     padding: 20px;
     color: white;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .profile-pic {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin: 20px;
 }
 
 .search-container {
@@ -85,9 +89,9 @@ input {
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f8f8;
+    background-color: #adc1e3;
     padding: 8px;
-    color: #333;
+    color: #14132e;
     border-top: 1px solid black;
 }
 
@@ -101,6 +105,10 @@ input {
 
 .result-item {
     border: 1px solid black;
+    background-color: #335363;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    color: white;
     margin: 20px;
     font-size: 23px;
     padding:20px;
@@ -111,6 +119,6 @@ input {
 .pic {
     justify-content: right;
     width: 400px;
-    height: 400px;
+    height:auto;
     margin: 20px;
 }
