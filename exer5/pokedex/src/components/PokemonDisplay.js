@@ -1,12 +1,12 @@
 
 const PokemonDisplay = ({ pokemon }) => {
     if (!pokemon) {
-        return null;
+        return <div className = ""></div>;
     }
     return (
         <div>
-          <h2>{pokemon.name}</h2>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <img src={pokemon.sprites.front_default} alt={pokemon.name} className="w-72 h-72 bg-gray-700 mb-4" />
+          <h2 className = "bg-gray-500">{pokemon.name}</h2>
         </div>
       );
 }

@@ -4,7 +4,7 @@ const TypeList = ({pokemon}) => {
     }
     return (
         <div>
-            <p>
+            <p className = "p-3 bg-gray-600">
                 Types: {pokemon.types.map(t => t.type.name).join(', ')}
             </p>
         </div>
